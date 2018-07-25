@@ -13,6 +13,7 @@ endif()
 
 file(GLOB YOLO_SOURCE_FILES src/*.cpp)
 file(GLOB CUDA_SOURCE_FILES src/*.cu)
+file(GLOB EXAMPLE_SOURCE_FILES example/*.cpp)
 
 include_directories( ./include )
 
@@ -48,13 +49,33 @@ if (USE_OPENCV)
   endif()
 endif()
 
+add_executable (darknet
+  ${EXAMPLE_SOURCE_FILES}
+)
+
 add_library(${PROJECT_NAME} STATIC
   ${YOLO_SOURCE_FILES}
 )
 
+target_link_libraries(darknet
+  pthread
+  ${PROJECT_NAME}
+)
+
 target_compile_features(${PROJECT_NAME} PUBLIC cxx_std_11)
 
+if (USE_OPENCV)
+  target_link_libraries(darknet
+    ${OpenCV_LIBS} 
+  )
+endif()
+
 if (USE_CUDA)
+  target_link_libraries(darknet 
+    ${CUDA_curand_LIBRARY}
+    ${CUDA_CUBLAS_LIBRARIES}
+  )
+
   add_library(${PROJECT_NAME}_cuda STATIC
     ${CUDA_SOURCE_FILES}
   )
