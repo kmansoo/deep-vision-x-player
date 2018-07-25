@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.8 FATAL_ERROR)
 
-# Following options defines at deep-vision-x-player/CMakeLists.txt
+# options below defines at deep-vision-x-player/CMakeLists.txt
 
 # option(USE_OPENCV "Use OpenCV"  ON)
 # option(USE_CUDA   "Use CUDA"    ON)
