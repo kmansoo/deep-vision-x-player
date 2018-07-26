@@ -35,5 +35,5 @@ And you have to use parameters below to run the built DeepVisionXPlayer.
 
 ```bash
 cd {git}/deep-vision-x-player
-./build/bin/DeepVisionXPlayer cfg/yolov3.cfg weights/yolov3.weights bus.mp4
+./build/bin/DeepVisionXPlayer cfg/yolov3.cfg cfg/coco.dat weights/yolov3.weights example.mp4
 ```

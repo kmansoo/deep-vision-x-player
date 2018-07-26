@@ -67,7 +67,7 @@ int main(int argc, char* argv[]) {
 
     detector.predict(source_img);
 
-    cv::imshow("image", source_img);           
+    cv::imshow("Detecting Objects on the video file", source_img);           
 
     cv::waitKey(1);
   }
