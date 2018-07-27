@@ -53,7 +53,7 @@ int main(int argc, char* argv[]) {
   // When the source file is an video it must use a predicit(cv::Mat& src_img) function in ExYoloDetector for each images in video.
   cv::VideoCapture video_cap;
 
-  video_cap.open(argv[3]);
+  video_cap.open(source_file.c_str());
 
   if (!video_cap.isOpened()) {
     std::cout << "ERROR: I can not open camera or video file." << std::endl;
