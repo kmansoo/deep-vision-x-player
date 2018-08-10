@@ -83,7 +83,11 @@ if (USE_CUDA)
   target_compile_features(${PROJECT_NAME}_cuda PUBLIC cxx_std_11)
   target_compile_definitions(${PROJECT_NAME}_cuda PUBLIC DKGPU)  
 
-  set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror ${CUDA_WARNING} -restrict")
+  if (USE_RELEASE_MODE)
+    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror ${CUDA_WARNING} -restrict -fPIC -Ofast")
+  elseif()
+    set(CMAKE_CUDA_FLAGS "${CMAKE_CUDA_FLAGS} -Werror ${CUDA_WARNING} -restrict")
+  endif()
   
   #
   # You have to configure following setting to meet your GPU environment!

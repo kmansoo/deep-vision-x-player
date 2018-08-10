@@ -10,13 +10,16 @@ PROJECT(Deep-Vision-X)
 # SET(CMAKE_VERBOSE_MAKEFILE ON)
 #
 
-option(USE_OPENCV "Use OpenCV"  ON)
-option(USE_CUDA   "Use CUDA"    ON)
+option(USE_OPENCV       "Use OpenCV"  ON)
+option(USE_CUDA         "Use CUDA"    OFF)
+option(USE_RELEASE_MODE "Use CUDA"    ON)
 
 #
 # Add Compiler Option and Macro
 #
-ADD_DEFINITIONS(-DCALIB_CFG_BUILD_MODE="${CMAKE_BUILD_TYPE}")
+if (USE_RELEASE_MODE)
+  set (CMAKE_CXX_FLAGS "-fPIC -Ofast")
+endif()
 
 # Set Build Directories
 SET(CMAKE_ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/lib)
